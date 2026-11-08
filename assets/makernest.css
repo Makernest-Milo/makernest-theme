@@ -128,14 +128,12 @@ h1, h2, h3, .h0, .h1, .h2, .h3 { font-family: var(--mn-display); font-weight: 80
 
 /* Logo */
 .mn-logo { display: inline-flex; align-items: center; gap: 1rem; text-decoration: none; color: var(--mn-ink); }
-.mn-logo .mn-cairn { width: 2.6rem; height: 2.6rem; display: block; }
-.mn-logo span { font-family: var(--mn-display); font-weight: 700; font-size: 2.4rem; letter-spacing: -.04rem; line-height: 1; }
+.mn-logo .mn-lockup-svg { height: 2.6rem; width: auto; display: block; overflow: visible; }
 
 /* Level lock-up on the product page */
 .mn-lockup { display: flex; flex-wrap: wrap; align-items: center; gap: 1.4rem; }
 .mn-lockup .mn-logo { padding-right: 1.4rem; border-right: .2rem solid var(--mn-ink); }
-.mn-lockup .mn-logo .mn-cairn { width: 2.2rem; height: 2.2rem; }
-.mn-lockup .mn-logo span { font-size: 2rem; }
+.mn-lockup .mn-logo .mn-lockup-svg { height: 2.1rem; }
 .mn-pills { display: flex; flex-wrap: wrap; gap: .8rem; }
 .mn-notify { display: flex; flex-direction: column; gap: 1rem; padding: 1.8rem; border: .2rem solid var(--mn-ink); border-radius: 1.6rem; }
 .mn-notify .mn-notify-row { display: flex; gap: .8rem; }
@@ -171,4 +169,4 @@ h1, h2, h3, .h0, .h1, .h2, .h3 { font-family: var(--mn-display); font-weight: 80
 /* Headings inside MakerNest sections take the section's own text colour (light on dark grounds). */
 .mn h1, .mn h2, .mn h3, .mn h4 { color: inherit; }
 .mn-logo { white-space: nowrap; }
-@media (max-width: 749px) { .mn-logo span { font-size: 2rem; } .mn-logo .mn-cairn { width: 2.2rem; height: 2.2rem; } }
+@media (max-width: 749px) { .mn-logo .mn-lockup-svg { height: 2.2rem; } }
