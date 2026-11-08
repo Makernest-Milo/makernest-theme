@@ -20,7 +20,7 @@
           <label>City<input name="contact[City]" autocomplete="address-level2"></label>
           <label>{{ s.topic_label | escape }}
             <select name="contact[{{ s.topic_label | escape }}]">
-              {%- assign opts = s.options | split: ',' -%}
+              {%- if s.options contains '|' -%}{%- assign opts = s.options | split: '|' -%}{%- else -%}{%- assign opts = s.options | split: ',' -%}{%- endif -%}
               {%- for o in opts -%}<option>{{ o | strip | escape }}</option>{%- endfor -%}
             </select>
           </label>
