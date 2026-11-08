@@ -1,0 +1,47 @@
+{%- comment -%}
+  MakerNest: the book and Milo on laptop and phone, with a short message beside it.
+{%- endcomment -%}
+{%- assign s = section.settings -%}
+<section class="mn mn-section mn-devices" id="mn-{{ section.id }}" style="background: {{ s.background }};">
+  <div class="mn-wrap mn-row">
+    <div class="mn-col mn-devices__art">
+      {% render 'mn-img', image: s.image, asset: s.asset, sizes: '(min-width: 990px) 60vw, 100vw', widths: '600, 1000, 2000', alt: s.image_alt %}
+    </div>
+    <div class="mn-col mn-devices__text">
+      {%- if s.eyebrow != blank -%}<p class="mn-eyebrow">{{ s.eyebrow | escape }}</p>{%- endif -%}
+      {%- if s.heading != blank -%}<h2 class="mn-h2">{{ s.heading | escape }}</h2>{%- endif -%}
+      {%- if s.text != blank -%}<div class="mn-lead">{{ s.text }}</div>{%- endif -%}
+      <div class="mn-btns">
+        {%- if s.button_1 != blank -%}<a class="mn-btn" href="{{ s.link_1 | default: '#' }}">{{ s.button_1 | escape }} <span aria-hidden="true">→</span></a>{%- endif -%}
+        {%- if s.button_2 != blank -%}<a class="mn-btn mn-btn--outline" href="{{ s.link_2 | default: '#' }}">{{ s.button_2 | escape }}</a>{%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% style %}
+  #mn-{{ section.id }} .mn-devices__art { flex: 1.6 1 56rem; }
+  #mn-{{ section.id }} .mn-devices__art img { width: 100%; height: auto; display: block; }
+  #mn-{{ section.id }} .mn-devices__text { flex: 1 1 32rem; }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "MakerNest book and Milo",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "In every box" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "The book, the kit and Milo." },
+    { "type": "richtext", "id": "text", "label": "Text" },
+    { "type": "text", "id": "button_1", "label": "First button", "default": "Try Milo" },
+    { "type": "url", "id": "link_1", "label": "First button link" },
+    { "type": "text", "id": "button_2", "label": "Second button" },
+    { "type": "url", "id": "link_2", "label": "Second button link" },
+    { "type": "color", "id": "background", "label": "Background", "default": "#FBF9F3" },
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "text", "id": "asset", "label": "Built-in image (used when no image is picked)", "default": "mn-milo-devices.webp" },
+    { "type": "text", "id": "image_alt", "label": "Image description", "default": "The Maker's Book of Origins beside Milo, the AI mentor, open on a laptop and a phone" }
+  ],
+  "presets": [{ "name": "MakerNest book and Milo" }]
+}
+{% endschema %}

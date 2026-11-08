@@ -11,8 +11,8 @@
     <div class="mn-grid" style="grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));">
       {%- for block in section.blocks -%}
         <figure class="mn-figure" {{ block.shopify_attributes }}>
-          {%- if block.settings.image != blank -%}
-            {{ block.settings.image | image_url: width: 900 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 33vw, 100vw', widths: '450, 900' }}
+          {%- if block.settings.image != blank or block.settings.asset != blank -%}
+            {% render 'mn-img', image: block.settings.image, asset: block.settings.asset, width: 900, sizes: '(min-width: 990px) 33vw, 100vw', widths: '450, 900' %}
           {%- else -%}
             <div class="mn-placeholder" style="aspect-ratio: 4 / 3; border-radius: 1.8rem; background: var(--mn-paper);">PHOTO</div>
           {%- endif -%}
@@ -36,6 +36,7 @@
   "blocks": [
     { "type": "image", "name": "Build", "limit": 6, "settings": [
       { "type": "image_picker", "id": "image", "label": "Image" },
+      { "type": "text", "id": "asset", "label": "Built-in image (used when no image is picked)" },
       { "type": "text", "id": "number", "label": "Number", "default": "04" },
       { "type": "text", "id": "caption", "label": "Caption", "default": "The Chatterbox" }
     ] }

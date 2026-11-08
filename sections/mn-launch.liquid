@@ -1,0 +1,83 @@
+{%- comment -%}
+  MakerNest launch banner: a night sky with live fireworks and sparklers (assets/mn-sky.js),
+  the launch message on the left and the product image on the right.
+{%- endcomment -%}
+{%- assign s = section.settings -%}
+<section class="mn mn-launch" id="mn-{{ section.id }}">
+  <canvas class="mn-launch__sky" aria-hidden="true"></canvas>
+  <div class="mn-wrap mn-row mn-launch__row">
+    <div class="mn-col mn-launch__text">
+      {%- if s.eyebrow != blank -%}<p class="mn-eyebrow mn-launch__eyebrow">{{ s.eyebrow | escape }}</p>{%- endif -%}
+      {%- if s.heading != blank -%}
+        <h1 class="mn-h1 mn-launch__h">{{ s.heading | escape }}{% if s.heading_2 != blank %}<span>{{ s.heading_2 | escape }}</span>{% endif %}</h1>
+      {%- endif -%}
+      {%- if s.text != blank -%}<div class="mn-lead mn-launch__lead">{{ s.text }}</div>{%- endif -%}
+      <div class="mn-btns">
+        {%- if s.button_1 != blank -%}<a class="mn-btn mn-btn--yellow" href="{{ s.link_1 | default: '#' }}">{{ s.button_1 | escape }} <span aria-hidden="true">→</span></a>{%- endif -%}
+        {%- if s.button_2 != blank -%}<a class="mn-btn mn-btn--light" href="{{ s.link_2 | default: '#' }}">{{ s.button_2 | escape }}</a>{%- endif -%}
+      </div>
+      {%- if s.note != blank -%}<p class="mn-launch__note">{{ s.note | escape }}</p>{%- endif -%}
+    </div>
+    <div class="mn-col mn-launch__art">
+      {% render 'mn-img', image: s.image, asset: s.asset, loading: 'eager', sizes: '(min-width: 990px) 55vw, 100vw', widths: '600, 900, 1300', alt: s.image_alt %}
+    </div>
+  </div>
+</section>
+
+{% style %}
+  #mn-{{ section.id }}.mn-launch { position: relative; overflow: hidden; color: #FBF9F3;
+    background:
+      radial-gradient(60% 40% at 72% 70%, rgba(244,178,35,.22) 0%, rgba(244,178,35,0) 70%),
+      radial-gradient(90% 40% at 50% 108%, rgba(232,112,43,.45) 0%, rgba(232,112,43,0) 70%),
+      radial-gradient(110% 70% at 85% 0%, #3a2a63 0%, rgba(58,42,99,0) 70%),
+      linear-gradient(180deg, #221a3b 0%, #1a1430 60%, #22161f 100%); }
+  #mn-{{ section.id }} .mn-launch__sky { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  #mn-{{ section.id }} .mn-launch__row { position: relative; z-index: 1; padding-top: 7.2rem; padding-bottom: 8.8rem; min-height: 64rem; }
+  #mn-{{ section.id }} .mn-launch__eyebrow { color: #F4B223; }
+  #mn-{{ section.id }} .mn-launch__h span { display: block; color: #F4B223; }
+  #mn-{{ section.id }} .mn-launch__lead { color: #e9e4d8; }
+  #mn-{{ section.id }} .mn-launch__note { margin: 0; font-family: var(--mn-mono); font-size: 1.3rem; letter-spacing: .08rem; color: #cfc9bb; }
+  #mn-{{ section.id }} .mn-launch__art { flex-basis: 52rem; align-items: center; }
+  #mn-{{ section.id }} .mn-launch__art img { width: 100%; height: auto; display: block; filter: drop-shadow(0 0 4rem rgba(244,178,35,.2)); }
+  @media (max-width: 749px) {
+    #mn-{{ section.id }} .mn-launch__row { padding-top: 4.8rem; padding-bottom: 6.4rem; min-height: 0; }
+  }
+{% endstyle %}
+
+<script src="{{ 'mn-sky.js' | asset_url }}" defer></script>
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    var el = document.querySelector('#mn-{{ section.id }} .mn-launch__sky');
+    if (!el || !window.MNSky) return;
+    var narrow = window.innerWidth < 750;
+    var sky = window.MNSky(el, {
+      spots: narrow ? [[.88,.62],[.15,.66],[.55,.58],[.9,.9],[.1,.92]]
+                    : [[.62,.10],[.86,.08],[.95,.36],[.40,.05],[.74,.26],[.05,.12],[.50,.30],[.98,.70]],
+      sparklers: narrow ? [] : [{ x: 0, y: .98, ang: -0.9, len: .22 }, { x: 1, y: .98, ang: Math.PI + 0.9, len: .22 }],
+      scale: narrow ? .8 : 1
+    });
+    sky.play();
+  });
+</script>
+
+{% schema %}
+{
+  "name": "MakerNest launch banner",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Launching today · Diwali 2026" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "A new light" },
+    { "type": "text", "id": "heading_2", "label": "Heading, second line (yellow)", "default": "in learning." },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>MakerNest Origins is here.</p>" },
+    { "type": "text", "id": "button_1", "label": "First button", "default": "Pre-order to book yours" },
+    { "type": "url", "id": "link_1", "label": "First button link" },
+    { "type": "text", "id": "button_2", "label": "Second button", "default": "Explore Origins" },
+    { "type": "url", "id": "link_2", "label": "Second button link" },
+    { "type": "text", "id": "note", "label": "Small note", "default": "No payment now · Expected delivery by 24 November 2026" },
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "text", "id": "asset", "label": "Built-in image (used when no image is picked)", "default": "mn-origins-exploded.webp" },
+    { "type": "text", "id": "image_alt", "label": "Image description", "default": "The Origins kit opened up: the box, the base board with its parts, and the book" }
+  ],
+  "presets": [{ "name": "MakerNest launch banner" }]
+}
+{% endschema %}

@@ -20,9 +20,9 @@
         </p>
       {%- endif -%}
     </div>
-    {%- if s.image != blank -%}
+    {%- if s.image != blank or s.asset != blank -%}
       <div class="mn-col mn-media mn-level--{{ s.image_ground }}{% if s.cover %} mn-media--cover{% endif %}">
-        {{ s.image | image_url: width: 1600 | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '(min-width: 990px) 50vw, 100vw', widths: '600, 900, 1200, 1600' }}
+        {% render 'mn-img', image: s.image, asset: s.asset, loading: 'eager', sizes: '(min-width: 990px) 50vw, 100vw', widths: '600, 900, 1200, 1600', alt: s.heading %}
         {%- if s.badge != blank -%}<span class="mn-pill mn-badge">{{ s.badge | escape }}</span>{%- endif -%}
       </div>
     {%- endif -%}
@@ -45,6 +45,7 @@
     { "type": "text", "id": "tags", "label": "Small tags (separate with |)", "default": "14 builds per level | The book in the box | Milo included" },
     { "type": "checkbox", "id": "dark", "label": "Dark background", "default": false },
     { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "text", "id": "asset", "label": "Built-in image (used when no image is picked)" },
     { "type": "checkbox", "id": "cover", "label": "Image fills its box", "default": false },
     { "type": "select", "id": "image_ground", "label": "Image background", "default": "origins", "options": [
       { "value": "origins", "label": "Origins yellow" }, { "value": "motion", "label": "Motion orange" },

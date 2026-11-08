@@ -1,0 +1,24 @@
+{%- comment -%}
+  Image from an image_picker setting, or a theme asset as fallback.
+  Params: image, asset (file name in assets/), width, sizes, widths, loading, alt, class
+{%- endcomment -%}
+{%- liquid
+  assign w = width | default: 1600
+  assign ld = loading | default: 'lazy'
+  assign dims = 'mn-book-cover.webp:900x1274|mn-ch04.webp:1600x644|mn-ch10.webp:1600x644|mn-ch11.webp:1600x644|mn-ch12.webp:1600x644|mn-gift.webp:1600x644|mn-kit-box.webp:1600x711|mn-kit-exploded.webp:1300x962|mn-kit-flatlay.webp:1600x1220|mn-kit-hero.webp:1500x599|mn-milo-devices.webp:2000x1245|mn-origins-exploded.webp:1300x962' | split: '|'
+  assign iw = 1600
+  assign ih = 1000
+  for d in dims
+    assign pair = d | split: ':'
+    if pair[0] == asset
+      assign wh = pair[1] | split: 'x'
+      assign iw = wh[0]
+      assign ih = wh[1]
+    endif
+  endfor
+-%}
+{%- if image != blank -%}
+  {{ image | image_url: width: w | image_tag: loading: ld, sizes: sizes, widths: widths, class: class, alt: alt }}
+{%- elsif asset != blank -%}
+  <img src="{{ asset | asset_url }}" width="{{ iw }}" height="{{ ih }}" style="height: auto;" alt="{{ alt | escape }}" loading="{{ ld }}"{% if class %} class="{{ class }}"{% endif %}{% if ld == 'eager' %} fetchpriority="high"{% endif %}>
+{%- endif -%}

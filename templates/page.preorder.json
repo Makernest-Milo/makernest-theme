@@ -13,7 +13,7 @@
         "link_2": "",
         "tags": "Origins ₹3,450 | Motion ₹3,750 | Both together ₹6,480, 10% off",
         "dark": false,
-        "image": "shopify://shop_images/mn-kit-exploded.png",
+        "asset": "mn-kit-exploded.webp",
         "cover": false,
         "image_ground": "origins",
         "badge": "Prices include taxes"
