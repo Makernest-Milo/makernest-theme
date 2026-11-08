@@ -35,8 +35,8 @@
             "name": "Origins",
             "verbs": "Sense · decide · act",
             "text": "A machine that notices. Heat, light and sound become numbers.",
-            "status": "On sale",
-            "link": "shopify://products/origins"
+            "status": "Pre-order",
+            "link": "/pages/preorder"
           }
         },
         "motion": {
@@ -48,8 +48,8 @@
             "name": "Motion",
             "verbs": "Move · hold · go",
             "text": "A machine that does work. Force, torque, speed and energy.",
-            "status": "On sale",
-            "link": "shopify://products/motion"
+            "status": "Pre-order",
+            "link": "/pages/preorder"
           }
         },
         "connected": {
@@ -61,8 +61,8 @@
             "name": "Connected",
             "verbs": "Send · agree · reach",
             "text": "A machine that talks. Signals, messages, range and timing.",
-            "status": "On sale",
-            "link": "shopify://products/connected"
+            "status": "Notify me",
+            "link": "/pages/contact"
           }
         },
         "autonomy": {
@@ -74,8 +74,8 @@
             "name": "Autonomy",
             "verbs": "Learn · test · be honest",
             "text": "A machine that learns from you, and tells you how sure it is.",
-            "status": "On sale",
-            "link": "shopify://products/autonomy"
+            "status": "Notify me",
+            "link": "/pages/contact"
           }
         }
       },
@@ -153,8 +153,8 @@
       "settings": {
         "eyebrow": "Origins · Level I",
         "heading": "Fourteen things to build, and one machine that becomes all of them.",
-        "button": "Explore Origins",
-        "link": "shopify://products/origins"
+        "button": "Pre-order Origins",
+        "link": "/pages/preorder"
       },
       "blocks": {
         "a": {
@@ -199,8 +199,8 @@
         "eyebrow": "Meet Milo · Your AI mentor",
         "heading": "A mentor who asks the right question.",
         "text": "<p>Milo wrote the books, and Milo is there when you're stuck, on a phone, tablet or laptop. It knows your level and your chapter, hands you every sketch, and answers a question with a better question until you find the answer yourself.</p>",
-        "button_1": "How Milo works",
-        "link_1": "shopify://pages/milo",
+        "button_1": "Try Milo",
+        "link_1": "https://milo.makernest.com/origins",
         "button_2": "",
         "link_2": ""
       },
@@ -359,7 +359,7 @@
         "button_1": "Pre-order to book yours",
         "link_1": "/pages/preorder",
         "button_2": "Visit the shop",
-        "link_2": "shopify://pages/shop"
+        "link_2": "/collections/all"
       }
     },
     "launch": {
@@ -371,8 +371,8 @@
         "text": "<p>MakerNest Origins is here. STEAM learned by building: science, technology and electronics, with curiosity and play from age 10. A MakerNest kit is the first step to your first home maker-space.</p>",
         "button_1": "Pre-order to book yours",
         "link_1": "/pages/preorder",
-        "button_2": "Explore Origins",
-        "link_2": "shopify://products/origins",
+        "button_2": "What's in the box",
+        "link_2": "#how",
         "note": "No payment now · Expected delivery by 24 November 2026",
         "asset": "mn-origins-exploded.webp",
         "image_alt": "The Origins kit opened up: the box, the base board with its parts, and the book"
