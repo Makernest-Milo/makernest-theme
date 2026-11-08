@@ -1,0 +1,38 @@
+{%- assign s = section.settings -%}
+<section class="mn mn-section" id="{{ s.anchor | default: section.id }}">
+  <div class="mn-wrap" style="display: flex; flex-wrap: wrap; gap: 4.8rem;">
+    <div style="flex: 1 1 36rem; display: flex; flex-direction: column; gap: 1.6rem;">
+      {%- if s.eyebrow != blank -%}<p class="mn-eyebrow">{{ s.eyebrow | escape }}</p>{%- endif -%}
+      <h2 class="mn-h3">{{ s.heading | escape }}</h2>
+      {%- if s.text != blank -%}<div>{{ s.text }}</div>{%- endif -%}
+    </div>
+    <div class="mn-faq" style="flex: 2 1 56rem; display: flex; flex-direction: column;">
+      {%- for block in section.blocks -%}
+        <details {{ block.shopify_attributes }}>
+          <summary>{{ block.settings.question | escape }}</summary>
+          <div style="margin-top: 1.2rem;">{{ block.settings.answer }}</div>
+        </details>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "MakerNest questions",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "anchor", "label": "Anchor", "default": "grown-ups" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "For grown-ups" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "What you'll want to know before you buy." },
+    { "type": "richtext", "id": "text", "label": "Text" }
+  ],
+  "blocks": [
+    { "type": "question", "name": "Question", "settings": [
+      { "type": "text", "id": "question", "label": "Question", "default": "Which level should we start with?" },
+      { "type": "richtext", "id": "answer", "label": "Answer", "default": "<p>Start with Origins.</p>" }
+    ] }
+  ],
+  "presets": [{ "name": "MakerNest questions", "blocks": [{ "type": "question" }] }]
+}
+{% endschema %}

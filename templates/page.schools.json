@@ -1,0 +1,90 @@
+{
+  "sections": {
+    "hero": {
+      "type": "mn-hero",
+      "settings": {
+        "eyebrow": "Schools and Academy",
+        "heading": "Makers grow faster together.",
+        "is_page_title": true,
+        "text": "<p>The same kits, books and mentor, run in your school lab or at a MakerNest Academy with trained mentors.</p>",
+        "button_1": "",
+        "link_1": "",
+        "button_2": "",
+        "link_2": "",
+        "tags": "",
+        "dark": false,
+        "badge": ""
+      }
+    },
+    "tiles": {
+      "type": "mn-tiles",
+      "settings": {
+        "anchor": "",
+        "heading": ""
+      },
+      "blocks": {
+        "t1": {
+          "type": "tile",
+          "settings": {
+            "ground": "connected",
+            "eyebrow": "In schools",
+            "heading": "A programme for your lab",
+            "text": "<ul><li>Class packs of any level, with spares</li><li>One level a year, so the path runs across grades</li><li>Teacher support and mentor training</li><li>Milo for every student, with no accounts to manage</li></ul>",
+            "button": "Ask for a school plan",
+            "link": "/pages/schools#enquire"
+          }
+        },
+        "t2": {
+          "type": "tile",
+          "settings": {
+            "ground": "autonomy",
+            "eyebrow": "MakerNest Academy",
+            "heading": "Weekly sessions in Chennai and Pondicherry",
+            "text": "<ul><li>90-minute sessions, once a week</li><li>Trained mentors, kits on the bench</li><li>Monthly fee: [PRICE]</li><li>Opening: [DATE]</li></ul>",
+            "button": "Join the waiting list",
+            "link": "/pages/schools#enquire"
+          }
+        },
+        "t3": {
+          "type": "tile",
+          "settings": {
+            "ground": "origins",
+            "eyebrow": "Summer cohorts",
+            "heading": "Build together, every day, for two weeks",
+            "text": "<ul><li>Pondicherry, late April to May 2027</li><li>25 to 30 makers in a cohort</li><li>10 to 12 days of project building</li><li>Fee: [PRICE]</li></ul>",
+            "button": "Hold a place",
+            "link": "/pages/schools#enquire"
+          }
+        }
+      },
+      "block_order": [
+        "t1",
+        "t2",
+        "t3"
+      ]
+    },
+    "enquire": {
+      "type": "mn-enquiry",
+      "settings": {
+        "anchor": "enquire",
+        "heading": "Tell us what you need",
+        "text": "<p>Schools, groups and families: one form for all of it. Or write to support@makernest.com.</p>",
+        "options": "A school programme, Class packs, The Academy, A summer cohort",
+        "tag": "schools",
+        "thanks": "We'll write back to the email you gave.",
+        "topic_label": "I'm asking about",
+        "count_label": "How many makers?",
+        "show_phone": false,
+        "phone_required": false,
+        "show_org": true,
+        "small_print": "",
+        "button": "Send"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "tiles",
+    "enquire"
+  ]
+}

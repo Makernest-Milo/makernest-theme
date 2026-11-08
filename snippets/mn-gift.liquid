@@ -1,0 +1,6 @@
+{%- comment -%} A gift note that travels with the cart line as a line item property. {%- endcomment -%}
+<details class="mn mn-notify" {{ block.shopify_attributes }} style="margin: 1.2rem 0;">
+  <summary style="cursor: pointer; font-weight: 700;">{{ block.settings.label | escape }}</summary>
+  <label for="GiftNote-{{ block.id }}" class="mn-note">{{ block.settings.help | escape }}</label>
+  <textarea id="GiftNote-{{ block.id }}" name="properties[Gift note]" form="{{ product_form_id }}" maxlength="300" rows="3" style="border-radius: 1.2rem; border: .1rem solid var(--mn-rule); padding: 1.2rem; font: inherit;"></textarea>
+</details>

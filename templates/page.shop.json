@@ -1,0 +1,96 @@
+{
+  "sections": {
+    "hero": {
+      "type": "mn-hero",
+      "settings": {
+        "eyebrow": "The MakerNest eShop",
+        "heading": "Everything for the whole path, in one place.",
+        "is_page_title": true,
+        "text": "",
+        "button_1": "Maker kits",
+        "link_1": "/pages/shop#kits",
+        "button_2": "Parts and refills",
+        "link_2": "/pages/shop#parts",
+        "tags": "",
+        "dark": false,
+        "badge": ""
+      }
+    },
+    "kits": {
+      "type": "mn-product-cards",
+      "settings": {
+        "anchor": "kits",
+        "collection": "maker-kits",
+        "heading": "Maker kits",
+        "text": "",
+        "big": true,
+        "limit": 4
+      }
+    },
+    "parts": {
+      "type": "mn-product-cards",
+      "settings": {
+        "anchor": "parts",
+        "collection": "parts-and-refills",
+        "heading": "Parts and refills",
+        "text": "<p>So no build ever stops. Each part says which level and chapter it belongs to.</p>",
+        "big": false,
+        "limit": 8
+      }
+    },
+    "addons": {
+      "type": "mn-tiles",
+      "settings": {
+        "anchor": "addons",
+        "heading": ""
+      },
+      "blocks": {
+        "a": {
+          "type": "tile",
+          "settings": {
+            "ground": "tint",
+            "eyebrow": "Add-ons",
+            "heading": "Origins bench pack",
+            "text": "<p>Light sensors, buttons, LEDs, resistors, a piezo, a servo and a soil sensor: the parts for every bench experiment in the book.</p>",
+            "button": "See the bench pack",
+            "link": "shopify://products/origins-bench-pack"
+          }
+        },
+        "g": {
+          "type": "tile",
+          "settings": {
+            "ground": "dark",
+            "eyebrow": "Gifts",
+            "heading": "Give a level, or let them choose",
+            "text": "<p>Any kit can go as a gift with your note in the box. Or send a MakerNest gift card by email.</p>",
+            "button": "Gift cards",
+            "link": "shopify://collections/gifts"
+          }
+        }
+      },
+      "block_order": [
+        "a",
+        "g"
+      ]
+    },
+    "more": {
+      "type": "mn-cta",
+      "settings": {
+        "boxed": false,
+        "heading": "More kits",
+        "text": "<p>Arduino boards and kits from our wider catalogue, for makers who want to go further on their own.</p>",
+        "button_1": "Browse more kits",
+        "link_1": "shopify://collections/more-kits",
+        "button_2": "",
+        "link_2": ""
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "kits",
+    "parts",
+    "addons",
+    "more"
+  ]
+}

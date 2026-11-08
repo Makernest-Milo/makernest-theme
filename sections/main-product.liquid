@@ -488,7 +488,17 @@
                     block: block,
                     product_form_id: product_form_id
                   %}
+                {%- when 'mn_level' -%}
+                  {%- render 'mn-level-lockup', product: product, block: block -%}
+                {%- when 'mn_gift' -%}
+                  {%- render 'mn-gift', product_form_id: product_form_id, block: block -%}
+                {%- when 'mn_addon' -%}
+                  {%- render 'mn-addon', block: block -%}
                 {%- when 'buy_buttons' -%}
+                  {%- assign mn_status = product.metafields.makernest.status.value -%}
+                  {%- if mn_status == 'coming' or mn_status == 'preorder' -%}
+                    {%- render 'mn-notify', product: product, block: block -%}
+                  {%- else -%}
                   {%- render 'buy-buttons',
                     block: block,
                     product: product,
@@ -496,6 +506,10 @@
                     section_id: section.id,
                     show_pickup_availability: true
                   -%}
+                  {%- if product.metafields.makernest.status.value == 'preorder' and product.metafields.makernest.preorder_note != blank -%}
+                    <p class="mn mn-note" style="margin-top: .8rem;">{{ product.metafields.makernest.preorder_note.value | escape }}</p>
+                  {%- endif -%}
+                  {%- endif -%}
                 {%- when 'rating' -%}
                   {%- if product.metafields.reviews.rating.value != blank -%}
                     <div class="rating-wrapper">
@@ -758,6 +772,31 @@
   "blocks": [
     {
       "type": "@app"
+    },
+    {
+      "type": "mn_level",
+      "name": "MakerNest level lock-up",
+      "limit": 1,
+      "settings": [
+        { "type": "paragraph", "content": "Shows the MakerNest mark, the level label and the level pills from the product's makernest metafields." }
+      ]
+    },
+    {
+      "type": "mn_gift",
+      "name": "MakerNest gift note",
+      "limit": 1,
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "It's a gift" },
+        { "type": "text", "id": "help", "label": "Help text", "default": "We'll put your note in the box." }
+      ]
+    },
+    {
+      "type": "mn_addon",
+      "name": "MakerNest add-on",
+      "settings": [
+        { "type": "product", "id": "product", "label": "Add-on product" },
+        { "type": "text", "id": "help", "label": "Help text", "default": "Extra parts for every bench experiment in the book." }
+      ]
     },
     {
       "type": "text",

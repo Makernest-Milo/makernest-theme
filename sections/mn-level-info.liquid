@@ -1,0 +1,50 @@
+{%- comment -%}
+  What you will learn (makernest.learn, one a line) and the flagships
+  (makernest.flagships, one a line: "F1 · The Doorkeeper · Everything so far, at a real door, for a week.").
+{%- endcomment -%}
+{%- assign mn = product.metafields.makernest -%}
+<section class="mn mn-section">
+  <div class="mn-wrap" style="display: flex; flex-wrap: wrap; gap: 4.8rem;">
+    {%- if mn.learn != blank -%}
+      <div style="flex: 1 1 42rem; display: flex; flex-direction: column; gap: 1.8rem;">
+        <h2 class="mn-h3">{{ section.settings.learn_heading | escape }}</h2>
+        <ul class="mn-rules">
+          {%- assign lines = mn.learn.value | newline_to_br | split: '<br />' -%}
+          {%- for line in lines -%}{%- assign l = line | strip -%}{%- if l != blank -%}<li>{{ l | escape }}</li>{%- endif -%}{%- endfor -%}
+        </ul>
+      </div>
+    {%- endif -%}
+    {%- if mn.flagships != blank -%}
+      <div style="flex: 1 1 42rem; display: flex; flex-direction: column; gap: 1.6rem;">
+        <h2 class="mn-h3">{{ section.settings.flagship_heading | escape }}</h2>
+        {%- assign lines = mn.flagships.value | newline_to_br | split: '<br />' -%}
+        {%- for line in lines -%}
+          {%- assign l = line | strip -%}
+          {%- if l != blank -%}
+            {%- assign parts = l | split: '·' -%}
+            <div class="mn-card mn-dark" style="gap: .4rem;">
+              <span class="mn-mono">{{ parts[0] | strip | escape }}</span>
+              <strong style="font-family: var(--mn-display); font-size: 2.8rem;">{{ parts[1] | strip | escape }}</strong>
+              <span>{{ parts[2] | strip | escape }}</span>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+        {%- if mn.teaser != blank -%}<p class="mn-card mn-tint" style="padding: 1.6rem;"><span><strong>Psst.</strong> {{ mn.teaser.value | escape }}</span></p>{%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "MakerNest level learning",
+  "tag": "div",
+  "enabled_on": { "templates": ["product"] },
+  "settings": [
+    { "type": "paragraph", "content": "Reads makernest.learn, makernest.flagships and makernest.teaser from the product." },
+    { "type": "text", "id": "learn_heading", "label": "Learning heading", "default": "What you will learn" },
+    { "type": "text", "id": "flagship_heading", "label": "Flagships heading", "default": "The two flagships" }
+  ],
+  "presets": [{ "name": "MakerNest level learning" }]
+}
+{% endschema %}

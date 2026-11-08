@@ -3,22 +3,17 @@
   "type": "footer",
   "sections": {
     "footer": {
-      "type": "footer",
-      "blocks": {},
-      "block_order": [],
+      "type": "mn-footer",
       "settings": {
-        "color_scheme": "scheme-1",
-        "newsletter_enable": true,
-        "newsletter_heading": "Subscribe to our emails",
-        "enable_follow_on_shop": true,
-        "show_social": true,
-        "enable_country_selector": true,
-        "enable_language_selector": true,
-        "payment_enable": true,
-        "show_policy": true,
-        "margin_top": 0,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "tagline": "The best place for makers' ideas to come to life. Real books, real machines, and a mentor called Milo.",
+        "newsletter": true,
+        "newsletter_label": "New levels and challenges, by email",
+        "menu_1": "footer-levels",
+        "menu_2": "footer-shop",
+        "menu_3": "footer-makernest",
+        "menu_4": "footer-help",
+        "legal_1": "MakerNest is a brand of Innointel Global Private Limited, Chennai, India.",
+        "legal_2": "MakerNest, Origins, Motion, Connected, Autonomy and the cairn are trademarks of Innointel Global Private Limited. MakerNest boards are Arduino-compatible; Arduino is a trademark of its owner."
       }
     }
   },

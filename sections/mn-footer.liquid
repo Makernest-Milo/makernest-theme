@@ -1,0 +1,59 @@
+{%- assign s = section.settings -%}
+<footer class="mn mn-dark" style="font-size: 1.5rem; line-height: 1.6;">
+  <div class="mn-footer-bar" aria-hidden="true"><div class="mn-level--origins"></div><div class="mn-level--motion"></div><div class="mn-level--connected"></div><div class="mn-level--autonomy"></div></div>
+  <div class="mn-wrap" style="padding-top: 5.6rem; padding-bottom: 3.2rem; display: flex; flex-direction: column; gap: 4rem;">
+    <div class="mn-footer-cols">
+      <div style="flex: 2 1 30rem; display: flex; flex-direction: column; gap: 1.4rem;">
+        <a href="{{ routes.root_url }}" aria-label="MakerNest home" style="text-decoration: none;">{%- render 'mn-logo', light: true -%}</a>
+        {%- if s.tagline != blank -%}<p style="max-width: 34ch;">{{ s.tagline | escape }}</p>{%- endif -%}
+        {%- if s.newsletter -%}
+          {%- form 'customer', id: 'FooterNews' -%}
+            <input type="hidden" name="contact[tags]" value="newsletter">
+            {%- if form.posted_successfully? -%}
+              <p role="status">Thank you. You're on the list.</p>
+            {%- else -%}
+              <label for="FooterNewsEmail" class="mn-mono" style="font-size: 1.2rem; letter-spacing: .1rem; display: block; margin-bottom: .8rem;">{{ s.newsletter_label | upcase | escape }}</label>
+              <div class="mn-footer-news">
+                <input id="FooterNewsEmail" type="email" name="contact[email]" required autocomplete="email" placeholder="Grown-up's email">
+                <button type="submit">Sign up</button>
+              </div>
+            {%- endif -%}
+          {%- endform -%}
+        {%- endif -%}
+      </div>
+      {%- for i in (1..4) -%}
+        {%- capture key %}menu_{{ i }}{% endcapture -%}
+        {%- assign menu = s[key] -%}
+        {%- if menu != blank and linklists[menu].links.size > 0 -%}
+          <nav aria-label="{{ linklists[menu].title | escape }}">
+            <strong class="mn-mono" style="font-size: 1.2rem; letter-spacing: .1rem;">{{ linklists[menu].title | upcase | escape }}</strong>
+            {%- for link in linklists[menu].links -%}<a href="{{ link.url }}">{{ link.title | escape }}</a>{%- endfor -%}
+          </nav>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+    <div class="mn-footer-legal">
+      <span>{{ s.legal_1 | escape }}</span>
+      <span>{{ s.legal_2 | escape }}</span>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "MakerNest footer",
+  "tag": "div",
+  "enabled_on": { "groups": ["footer"] },
+  "settings": [
+    { "type": "text", "id": "tagline", "label": "Tagline", "default": "The best place for makers' ideas to come to life. Real books, real machines, and a mentor called Milo." },
+    { "type": "checkbox", "id": "newsletter", "label": "Show email sign-up", "default": true },
+    { "type": "text", "id": "newsletter_label", "label": "Sign-up label", "default": "New levels and challenges, by email" },
+    { "type": "link_list", "id": "menu_1", "label": "Menu 1", "default": "footer" },
+    { "type": "link_list", "id": "menu_2", "label": "Menu 2" },
+    { "type": "link_list", "id": "menu_3", "label": "Menu 3" },
+    { "type": "link_list", "id": "menu_4", "label": "Menu 4" },
+    { "type": "text", "id": "legal_1", "label": "Legal line 1", "default": "MakerNest is a brand of Innointel Global Private Limited, Chennai, India." },
+    { "type": "text", "id": "legal_2", "label": "Legal line 2", "default": "MakerNest, Origins, Motion, Connected, Autonomy and the cairn are trademarks of Innointel Global Private Limited. Boards are Arduino-compatible; Arduino is a trademark of its owner." }
+  ]
+}
+{% endschema %}

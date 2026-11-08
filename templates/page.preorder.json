@@ -1,0 +1,45 @@
+{
+  "sections": {
+    "hero": {
+      "type": "mn-hero",
+      "settings": {
+        "eyebrow": "Diwali launch · Pre-order",
+        "heading": "Pre-order to book yours.",
+        "is_page_title": true,
+        "text": "<p>No payment now. Book Origins, Motion or both together, and we'll contact you to confirm before delivery. Expected delivery by 24 November 2026.</p>",
+        "button_1": "",
+        "link_1": "",
+        "button_2": "",
+        "link_2": "",
+        "tags": "Origins ₹3,450 | Motion ₹3,750 | Both together ₹6,480, 10% off",
+        "dark": false,
+        "image": "shopify://shop_images/mn-kit-exploded.png",
+        "cover": false,
+        "image_ground": "origins",
+        "badge": "Prices include taxes"
+      }
+    },
+    "form": {
+      "type": "mn-enquiry",
+      "settings": {
+        "anchor": "book",
+        "heading": "Book your kit",
+        "text": "<p>Every box carries the full 164-page, chapter-by-chapter book, with Milo, your AI mentor, alongside at milo.makernest.com.</p>",
+        "topic_label": "Kit",
+        "options": "Origins (₹3,450), Motion (₹3,750), Origins + Motion (₹6,480)",
+        "count_label": "How many?",
+        "show_phone": true,
+        "phone_required": true,
+        "show_org": false,
+        "small_print": "No payment now. We'll contact you to confirm your booking before delivery. Prices include taxes.",
+        "button": "Book yours",
+        "tag": "preorder",
+        "thanks": "Your booking is in. We'll contact you to confirm it before delivery."
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "form"
+  ]
+}

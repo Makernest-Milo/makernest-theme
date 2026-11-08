@@ -1,0 +1,22 @@
+{%- comment -%}
+  MakerNest mark locked up with the level label, then the level pills.
+  Reads product.metafields.makernest.level_label (single line) and .pills (multi-line, one pill a line).
+{%- endcomment -%}
+{%- assign mn = product.metafields.makernest -%}
+<div class="mn" {{ block.shopify_attributes }} style="display: flex; flex-direction: column; gap: 1.6rem; margin-bottom: 1.2rem;">
+  <div class="mn-lockup">
+    {%- render 'mn-logo' -%}
+    {%- if mn.level_label != blank -%}
+      <span class="mn-eyebrow">{{ mn.level_label.value | escape }}</span>
+    {%- endif -%}
+  </div>
+  {%- if mn.pills != blank -%}
+    <ul class="mn-pills" style="list-style: none; margin: 0; padding: 0;">
+      {%- assign pills = mn.pills.value | newline_to_br | split: '<br />' -%}
+      {%- for pill in pills -%}
+        {%- assign p = pill | strip -%}
+        {%- if p != blank -%}<li class="mn-pill mn-pill--outline">{{ p | escape }}</li>{%- endif -%}
+      {%- endfor -%}
+    </ul>
+  {%- endif -%}
+</div>

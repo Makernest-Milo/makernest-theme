@@ -1,0 +1,46 @@
+{%- comment -%}
+  The 14 builds of a level, from product.metafields.makernest.builds:
+  one build a line, as "01 · SENSE · First Light". Lines starting with F are flagships.
+{%- endcomment -%}
+{%- assign mn = product.metafields.makernest -%}
+{%- assign level = mn.level.value | default: 'origins' -%}
+{%- if mn.builds != blank -%}
+<section class="mn mn-section mn-level--{{ level }}">
+  <div class="mn-wrap" style="display: flex; flex-direction: column; gap: 3.2rem;">
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 1.6rem;">
+      <h2 class="mn-h2">{{ mn.verbs.value | default: section.settings.heading | escape }}</h2>
+      {%- if section.settings.text != blank -%}<div style="max-width: 42ch;">{{ section.settings.text }}</div>{%- endif -%}
+    </div>
+    <ol class="mn-builds">
+      {%- assign lines = mn.builds.value | newline_to_br | split: '<br />' -%}
+      {%- for line in lines -%}
+        {%- assign l = line | strip -%}
+        {%- if l != blank -%}
+          {%- assign parts = l | split: '·' -%}
+          {%- assign num = parts[0] | strip -%}
+          {%- assign verb = parts[1] | strip -%}
+          {%- assign name = parts[2] | strip -%}
+          <li{% if num contains 'F' %} class="is-flagship"{% endif %}>
+            <span class="mn-mono">{{ num | escape }} · {{ verb | upcase | escape }}</span>
+            <strong>{{ name | escape }}</strong>
+          </li>
+        {%- endif -%}
+      {%- endfor -%}
+    </ol>
+  </div>
+</section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "MakerNest level builds",
+  "tag": "div",
+  "enabled_on": { "templates": ["product"] },
+  "settings": [
+    { "type": "paragraph", "content": "Reads the builds from the product metafield makernest.builds (one a line: 01 · SENSE · First Light). The heading is makernest.verbs." },
+    { "type": "text", "id": "heading", "label": "Heading if no verbs metafield", "default": "Fourteen builds" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Twelve chapters and two flagships. Each one adds to the same machine, and each one has a part where you break it on purpose.</p>" }
+  ],
+  "presets": [{ "name": "MakerNest level builds" }]
+}
+{% endschema %}

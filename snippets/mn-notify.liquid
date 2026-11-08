@@ -1,0 +1,27 @@
+{%- comment -%}
+  Shown in place of the buy buttons while product.metafields.makernest.status is "coming".
+  Sends a contact form tagged with the product so you can email everyone on launch day.
+{%- endcomment -%}
+<div class="mn mn-notify" {{ block.shopify_attributes }} style="margin: 1.2rem 0;">
+  {%- assign notify_id = 'Notify-' | append: block.id -%}
+  {%- form 'contact', id: notify_id -%}
+    {%- if form.posted_successfully? -%}
+      <p role="status"><strong>Thank you.</strong> We'll email you the day {{ product.title | escape }} goes on sale.</p>
+    {%- else -%}
+      {%- if product.metafields.makernest.status.value == 'preorder' -%}
+        <p><strong>Pre-order to book yours.</strong> No payment now. {{ product.metafields.makernest.preorder_note.value | escape }}</p>
+        <a class="mn-btn" href="{{ routes.root_url }}pages/preorder">Book yours</a>
+      {%- else -%}
+      <p><strong>Coming soon.</strong> Leave a grown-up's email and we'll tell you the day it goes on sale.</p>
+      <input type="hidden" name="contact[tags]" value="notify, {{ product.handle }}">
+      <input type="hidden" name="contact[body]" value="Notify me: {{ product.title | escape }}">
+      <div class="mn-notify-row">
+        <label for="NotifyEmail-{{ block.id }}" class="mn-sr">Email</label>
+        <input id="NotifyEmail-{{ block.id }}" type="email" name="contact[email]" required autocomplete="email" placeholder="Grown-up's email">
+        <button type="submit" class="mn-btn" style="min-height: 5rem; padding: 0 2.2rem;">Notify me</button>
+      </div>
+      {%- if form.errors -%}<p role="alert">{{ form.errors | default_errors }}</p>{%- endif -%}
+      {%- endif -%}
+    {%- endif -%}
+  {%- endform -%}
+</div>

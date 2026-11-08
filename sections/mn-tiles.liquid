@@ -1,0 +1,49 @@
+<section class="mn" id="{{ section.settings.anchor | default: section.id }}" style="padding: 3.2rem 0 7.2rem;">
+  <div class="mn-wrap" style="display: flex; flex-direction: column; gap: 2.4rem;">
+    {%- if section.settings.heading != blank -%}<h2 class="mn-h3">{{ section.settings.heading | escape }}</h2>{%- endif -%}
+    <div class="mn-grid mn-grid--wide">
+      {%- for block in section.blocks -%}
+        {%- assign b = block.settings -%}
+        <div class="mn-card {% if b.ground == 'dark' %}mn-dark{% elsif b.ground == 'tint' %}mn-tint{% elsif b.ground == 'outline' %}mn-card--outline{% else %}mn-level--{{ b.ground }}{% endif %}" style="padding: 3.2rem; gap: 1.4rem;" {{ block.shopify_attributes }}>
+          {%- if b.eyebrow != blank -%}<span class="mn-mono" style="font-size: 1.2rem; letter-spacing: .1rem;">{{ b.eyebrow | upcase | escape }}</span>{%- endif -%}
+          <h3 style="margin: 0; font-family: var(--mn-display); font-weight: 800; font-size: 3.4rem; line-height: 1.05;">{{ b.heading | escape }}</h3>
+          {%- if b.text != blank -%}<div>{{ b.text }}</div>{%- endif -%}
+          {%- if b.button != blank -%}
+            {%- liquid
+              assign btn = 'mn-btn'
+              if b.ground == 'connected' or b.ground == 'autonomy' or b.ground == 'dark'
+                assign btn = 'mn-btn mn-btn--yellow'
+              endif
+            -%}
+            <a class="{{ btn }}" style="align-self: flex-start; margin-top: auto;" href="{{ b.link | default: '#' }}">{{ b.button | escape }}</a>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "MakerNest tiles",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "anchor", "label": "Anchor (optional)" },
+    { "type": "text", "id": "heading", "label": "Heading (optional)" }
+  ],
+  "blocks": [
+    { "type": "tile", "name": "Tile", "settings": [
+      { "type": "select", "id": "ground", "label": "Colour", "default": "connected", "options": [
+        { "value": "origins", "label": "Origins yellow" }, { "value": "motion", "label": "Motion orange" },
+        { "value": "connected", "label": "Connected blue" }, { "value": "autonomy", "label": "Autonomy purple" },
+        { "value": "dark", "label": "Ink" }, { "value": "tint", "label": "Yellow tint" }, { "value": "outline", "label": "Outline" } ] },
+      { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "In schools" },
+      { "type": "text", "id": "heading", "label": "Heading", "default": "A programme for your lab" },
+      { "type": "richtext", "id": "text", "label": "Text" },
+      { "type": "text", "id": "button", "label": "Button" },
+      { "type": "url", "id": "link", "label": "Button link" }
+    ] }
+  ],
+  "presets": [{ "name": "MakerNest tiles", "blocks": [{ "type": "tile" }, { "type": "tile" }] }]
+}
+{% endschema %}

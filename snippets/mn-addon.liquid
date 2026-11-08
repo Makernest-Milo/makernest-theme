@@ -1,0 +1,14 @@
+{%- comment -%} A small add-on (e.g. the bench pack) with its own Add button. {%- endcomment -%}
+{%- assign addon = block.settings.product -%}
+{%- if addon != blank and addon.available -%}
+  <div class="mn mn-notify" {{ block.shopify_attributes }} style="margin: 1.2rem 0; flex-direction: row; align-items: center; justify-content: space-between; gap: 1.2rem;">
+    <div>
+      <strong>{{ addon.title | escape }}</strong> · {{ addon.price | money }}<br>
+      <span class="mn-note">{{ block.settings.help | escape }}</span>
+    </div>
+    {%- form 'product', addon, class: 'mn-addon-form' -%}
+      <input type="hidden" name="id" value="{{ addon.selected_or_first_available_variant.id }}">
+      <button type="submit" class="mn-btn mn-btn--outline" style="min-height: 4.6rem; padding: 0 2rem; font-size: 1.5rem;">Add</button>
+    {%- endform -%}
+  </div>
+{%- endif -%}

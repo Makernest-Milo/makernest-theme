@@ -1,0 +1,36 @@
+{%- comment -%} In the box: makernest.in_box (one item a line) and makernest.you_need (one line). {%- endcomment -%}
+{%- assign mn = product.metafields.makernest -%}
+{%- if mn.in_box != blank -%}
+<section class="mn mn-section mn-tint">
+  <div class="mn-wrap mn-row">
+    <div class="mn-col mn-media" style="flex-basis: 52rem;">
+      {%- if section.settings.image != blank -%}
+        {{ section.settings.image | image_url: width: 1400 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 50vw, 100vw', widths: '600, 900, 1400' }}
+      {%- elsif product.media.size > 1 -%}
+        {{ product.media[1].preview_image | image_url: width: 1400 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 50vw, 100vw', widths: '600, 900, 1400' }}
+      {%- endif -%}
+    </div>
+    <div class="mn-col" style="flex-basis: 38rem; gap: 1.6rem;">
+      <h2 class="mn-h3">{{ section.settings.heading | escape }}</h2>
+      <ul style="margin: 0; padding-left: 2rem; display: flex; flex-direction: column; gap: .6rem;">
+        {%- assign lines = mn.in_box.value | newline_to_br | split: '<br />' -%}
+        {%- for line in lines -%}{%- assign l = line | strip -%}{%- if l != blank -%}<li>{{ l | escape }}</li>{%- endif -%}{%- endfor -%}
+      </ul>
+      {%- if mn.you_need != blank -%}<p class="mn-note">{{ mn.you_need.value | escape }}</p>{%- endif -%}
+    </div>
+  </div>
+</section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "MakerNest in the box",
+  "tag": "div",
+  "enabled_on": { "templates": ["product"] },
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "In the box" },
+    { "type": "image_picker", "id": "image", "label": "Image (else the product's second photo)" }
+  ],
+  "presets": [{ "name": "MakerNest in the box" }]
+}
+{% endschema %}

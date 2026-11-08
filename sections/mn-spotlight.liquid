@@ -1,0 +1,45 @@
+{%- assign s = section.settings -%}
+<section class="mn mn-section mn-tint">
+  <div class="mn-wrap" style="display: flex; flex-direction: column; gap: 3.2rem;">
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 2rem;">
+      <div style="display: flex; flex-direction: column; gap: 1.4rem;">
+        {%- if s.eyebrow != blank -%}<p class="mn-eyebrow">{{ s.eyebrow | escape }}</p>{%- endif -%}
+        <h2 class="mn-h2" style="max-width: 18ch;">{{ s.heading | escape }}</h2>
+      </div>
+      {%- if s.button != blank -%}<a class="mn-btn" href="{{ s.link | default: '#' }}">{{ s.button | escape }} <span aria-hidden="true">→</span></a>{%- endif -%}
+    </div>
+    <div class="mn-grid" style="grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));">
+      {%- for block in section.blocks -%}
+        <figure class="mn-figure" {{ block.shopify_attributes }}>
+          {%- if block.settings.image != blank -%}
+            {{ block.settings.image | image_url: width: 900 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 33vw, 100vw', widths: '450, 900' }}
+          {%- else -%}
+            <div class="mn-placeholder" style="aspect-ratio: 4 / 3; border-radius: 1.8rem; background: var(--mn-paper);">PHOTO</div>
+          {%- endif -%}
+          <figcaption><span class="mn-mono">{{ block.settings.number | escape }}</span> {{ block.settings.caption | escape }}</figcaption>
+        </figure>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "MakerNest spotlight",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Origins · Level I" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Fourteen things to build, and one machine that becomes all of them." },
+    { "type": "text", "id": "button", "label": "Button", "default": "Explore Origins" },
+    { "type": "url", "id": "link", "label": "Button link" }
+  ],
+  "blocks": [
+    { "type": "image", "name": "Build", "limit": 6, "settings": [
+      { "type": "image_picker", "id": "image", "label": "Image" },
+      { "type": "text", "id": "number", "label": "Number", "default": "04" },
+      { "type": "text", "id": "caption", "label": "Caption", "default": "The Chatterbox" }
+    ] }
+  ],
+  "presets": [{ "name": "MakerNest spotlight", "blocks": [{ "type": "image" }, { "type": "image" }, { "type": "image" }] }]
+}
+{% endschema %}

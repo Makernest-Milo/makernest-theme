@@ -1,0 +1,58 @@
+{%- assign s = section.settings -%}
+<section class="mn mn-dark mn-section" id="{{ s.anchor | default: 'enquire' }}">
+  <div class="mn-wrap" style="display: flex; flex-wrap: wrap; gap: 4.8rem;">
+    <div style="flex: 1 1 36rem; display: flex; flex-direction: column; gap: 1.4rem;">
+      <h2 class="mn-h3">{{ s.heading | escape }}</h2>
+      {%- if s.text != blank -%}<div class="mn-muted">{{ s.text }}</div>{%- endif -%}
+    </div>
+    <div style="flex: 2 1 56rem;">
+      {%- assign enquiry_id = 'Enquiry-' | append: section.id -%}
+      {%- form 'contact', id: enquiry_id, class: 'mn-form' -%}
+        {%- if form.posted_successfully? -%}
+          <p class="mn-full" role="status"><strong>Thank you.</strong> {{ s.thanks | escape }}</p>
+        {%- else -%}
+          {%- if form.errors -%}<p class="mn-full" role="alert">{{ form.errors | default_errors }}</p>{%- endif -%}
+          <input type="hidden" name="contact[tags]" value="{{ s.tag | escape }}">
+          <label>Your name<input name="contact[name]" autocomplete="name" required></label>
+          <label>Email<input type="email" name="contact[email]" autocomplete="email" required></label>
+          {%- if s.show_phone -%}<label>Phone<input type="tel" name="contact[phone]" autocomplete="tel" {% if s.phone_required %}required{% endif %}></label>{%- endif -%}
+          {%- if s.show_org -%}<label>School or organisation<input name="contact[Organisation]"></label>{%- endif -%}
+          <label>City<input name="contact[City]" autocomplete="address-level2"></label>
+          <label>{{ s.topic_label | escape }}
+            <select name="contact[{{ s.topic_label | escape }}]">
+              {%- assign opts = s.options | split: ',' -%}
+              {%- for o in opts -%}<option>{{ o | strip | escape }}</option>{%- endfor -%}
+            </select>
+          </label>
+          <label>{{ s.count_label | escape }}<input name="contact[{{ s.count_label | escape }}]" inputmode="numeric"></label>
+          <label class="mn-full">Anything else<textarea name="contact[body]"></textarea></label>
+          {%- if s.small_print != blank -%}<p class="mn-full mn-note mn-muted">{{ s.small_print | escape }}</p>{%- endif -%}
+          <button type="submit" class="mn-btn mn-btn--yellow mn-full" style="justify-self: start;">{{ s.button | escape }}</button>
+        {%- endif -%}
+      {%- endform -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "MakerNest enquiry form",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "anchor", "label": "Anchor", "default": "enquire" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Tell us what you need" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Schools, groups and families: one form for all of it. Or write to support@makernest.com.</p>" },
+    { "type": "text", "id": "topic_label", "label": "Choice label", "default": "I'm asking about" },
+    { "type": "text", "id": "options", "label": "Choices (comma separated)", "default": "A school programme, Class packs, The Academy, A summer cohort" },
+    { "type": "text", "id": "count_label", "label": "Number label", "default": "How many makers?" },
+    { "type": "checkbox", "id": "show_phone", "label": "Ask for a phone number", "default": false },
+    { "type": "checkbox", "id": "phone_required", "label": "Phone number required", "default": false },
+    { "type": "checkbox", "id": "show_org", "label": "Ask for school or organisation", "default": true },
+    { "type": "text", "id": "small_print", "label": "Small print above the button" },
+    { "type": "text", "id": "button", "label": "Button", "default": "Send" },
+    { "type": "text", "id": "tag", "label": "Tag on the message", "default": "schools" },
+    { "type": "text", "id": "thanks", "label": "Thank-you message", "default": "We'll write back to the email you gave." }
+  ],
+  "presets": [{ "name": "MakerNest enquiry form" }]
+}
+{% endschema %}

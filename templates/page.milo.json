@@ -1,0 +1,188 @@
+{
+  "sections": {
+    "chat": {
+      "type": "mn-chat",
+      "settings": {
+        "dark": true,
+        "chat_right": true,
+        "is_page_title": true,
+        "chat_label": "Origins · 03 The Noisemaker",
+        "caption": "A real reply from Milo, chapter 03.",
+        "eyebrow": "Meet Milo · Your AI mentor",
+        "heading": "A mentor who asks the right question.",
+        "text": "<p>Milo wrote the books, and Milo is there when you're stuck. It helps you find the answer. It never builds it for you.</p>",
+        "button_1": "Open Milo for Origins",
+        "link_1": "https://milo.makernest.com/origins",
+        "button_2": "For grown-ups",
+        "link_2": "/pages/milo#safe"
+      },
+      "blocks": {
+        "m0": {
+          "type": "message",
+          "settings": {
+            "who": "me",
+            "text": "Hi Milo, what does this chapter build?"
+          }
+        },
+        "m1": {
+          "type": "message",
+          "settings": {
+            "who": "milo",
+            "text": "This chapter is 03, The Noisemaker. It's about Act: making your machine loud enough that somebody in another room notices. Want to start with step 01, Open?"
+          }
+        }
+      },
+      "block_order": [
+        "m0",
+        "m1"
+      ]
+    },
+    "does": {
+      "type": "mn-features",
+      "settings": {
+        "anchor": "",
+        "eyebrow": "",
+        "heading": "What Milo does",
+        "text": "",
+        "style": "colour",
+        "ground": "paper",
+        "ruled": false
+      },
+      "blocks": {
+        "f0": {
+          "type": "feature",
+          "settings": {
+            "title": "Knows your page",
+            "text": "Built from the MakerNest books, so it knows your level and your chapter, and answers in words that fit."
+          }
+        },
+        "f1": {
+          "type": "feature",
+          "settings": {
+            "title": "Hands you every sketch",
+            "text": "The code for each build comes from Milo. Copy it, run it, then change it and make it yours."
+          }
+        },
+        "f2": {
+          "type": "feature",
+          "settings": {
+            "title": "Helps, never does it for you",
+            "text": "A question gets a better question, until you find the answer yourself. It won't give away a Break it answer."
+          }
+        },
+        "f3": {
+          "type": "feature",
+          "settings": {
+            "title": "Grows with you",
+            "text": "From your first sensor in Origins to your own code and, in Autonomy, your first trained model."
+          }
+        }
+      },
+      "block_order": [
+        "f0",
+        "f1",
+        "f2",
+        "f3"
+      ]
+    },
+    "door": {
+      "type": "mn-steps",
+      "settings": {
+        "anchor": "door",
+        "eyebrow": "",
+        "heading": "Every page of the book has a door to Milo",
+        "ground": "tint"
+      },
+      "blocks": {
+        "s0": {
+          "type": "step",
+          "settings": {
+            "title": "Type the link on the page",
+            "text": "makernest.com/origins/03 opens chapter 03."
+          }
+        },
+        "s1": {
+          "type": "step",
+          "settings": {
+            "title": "Say where you are",
+            "text": "Pick your step, so Milo knows what you've done."
+          }
+        },
+        "s2": {
+          "type": "step",
+          "settings": {
+            "title": "Get the sketch, or ask",
+            "text": "Copy the chapter's sketch, or tell Milo what's going wrong."
+          }
+        }
+      },
+      "block_order": [
+        "s0",
+        "s1",
+        "s2"
+      ]
+    },
+    "safe": {
+      "type": "mn-features",
+      "settings": {
+        "anchor": "safe",
+        "eyebrow": "For grown-ups",
+        "heading": "How Milo is kept safe",
+        "text": "",
+        "style": "list",
+        "ground": "paper",
+        "ruled": false
+      },
+      "blocks": {
+        "f0": {
+          "type": "feature",
+          "settings": {
+            "title": "Milo is a program, and says so.",
+            "text": "Ask it whether it's a person and it tells you it's an AI."
+          }
+        },
+        "f1": {
+          "type": "feature",
+          "settings": {
+            "title": "No account, no personal details.",
+            "text": "Phone numbers and email addresses typed into Milo are removed before anything is stored."
+          }
+        },
+        "f2": {
+          "type": "feature",
+          "settings": {
+            "title": "Kept for 7 days.",
+            "text": "Conversations are deleted after a week. Makers' words are never written to server logs."
+          }
+        },
+        "f3": {
+          "type": "feature",
+          "settings": {
+            "title": "Stays on the bench.",
+            "text": "Milo talks about the chapter and the machine. Safety rules from the book always win."
+          }
+        },
+        "f4": {
+          "type": "feature",
+          "settings": {
+            "title": "Points to people.",
+            "text": "If a maker sounds upset, Milo suggests a trusted grown-up, or Childline 1098 in India."
+          }
+        }
+      },
+      "block_order": [
+        "f0",
+        "f1",
+        "f2",
+        "f3",
+        "f4"
+      ]
+    }
+  },
+  "order": [
+    "chat",
+    "does",
+    "door",
+    "safe"
+  ]
+}

@@ -1,0 +1,49 @@
+{%- assign s = section.settings -%}
+<section class="mn {% if s.dark %}mn-dark{% endif %}">
+  <div class="mn-wrap mn-row" style="padding-top: 8rem; padding-bottom: 8rem;{% if s.chat_right %} flex-direction: row-reverse;{% endif %}">
+    <div class="mn-col mn-chat {% if s.dark %}mn-card--paper{% else %}mn-dark{% endif %}" style="flex-basis: 38rem;">
+      <div class="mn-chat-head"><span>MILO</span><span>{{ s.chat_label | upcase | escape }}</span></div>
+      {%- for block in section.blocks -%}
+        <p class="{% if block.settings.who == 'me' %}mn-me{% else %}mn-milo{% endif %}" {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</p>
+      {%- endfor -%}
+      {%- if s.caption != blank -%}<span class="mn-note">{{ s.caption | escape }}</span>{%- endif -%}
+    </div>
+    <div class="mn-col">
+      {%- if s.eyebrow != blank -%}<p class="mn-eyebrow"{% if s.dark %} style="color: var(--mn-origins);"{% endif %}>{{ s.eyebrow | escape }}</p>{%- endif -%}
+      {%- if s.is_page_title -%}<h1 class="mn-h1">{{ s.heading | escape }}</h1>{%- else -%}<h2 class="mn-h2">{{ s.heading | escape }}</h2>{%- endif -%}
+      {%- if s.text != blank -%}<div class="mn-lead{% if s.dark %} mn-muted{% endif %}">{{ s.text }}</div>{%- endif -%}
+      <div class="mn-btns">
+        {%- if s.button_1 != blank -%}<a class="mn-btn {% if s.dark %}mn-btn--yellow{% else %}mn-btn--outline{% endif %}" href="{{ s.link_1 | default: '#' }}">{{ s.button_1 | escape }} <span aria-hidden="true">→</span></a>{%- endif -%}
+        {%- if s.button_2 != blank -%}<a class="mn-btn {% if s.dark %}mn-btn--light{% else %}mn-btn--outline{% endif %}" href="{{ s.link_2 | default: '#' }}">{{ s.button_2 | escape }}</a>{%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "MakerNest Milo chat",
+  "tag": "div",
+  "settings": [
+    { "type": "checkbox", "id": "dark", "label": "Dark background", "default": false },
+    { "type": "checkbox", "id": "chat_right", "label": "Chat on the right", "default": false },
+    { "type": "checkbox", "id": "is_page_title", "label": "Heading is the page title (H1)", "default": false },
+    { "type": "text", "id": "chat_label", "label": "Chat label", "default": "Origins · Chapter 11" },
+    { "type": "text", "id": "caption", "label": "Caption under the chat" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Meet Milo · Your AI mentor" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "A mentor who asks the right question." },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Milo wrote the books, and Milo is there when you're stuck, on a phone, tablet or laptop.</p>" },
+    { "type": "text", "id": "button_1", "label": "First button", "default": "How Milo works" },
+    { "type": "url", "id": "link_1", "label": "First button link" },
+    { "type": "text", "id": "button_2", "label": "Second button" },
+    { "type": "url", "id": "link_2", "label": "Second button link" }
+  ],
+  "blocks": [
+    { "type": "message", "name": "Message", "settings": [
+      { "type": "select", "id": "who", "label": "Who says it", "default": "me", "options": [ { "value": "me", "label": "Maker" }, { "value": "milo", "label": "Milo" } ] },
+      { "type": "text", "id": "text", "label": "Text", "default": "My number won't change." }
+    ] }
+  ],
+  "presets": [{ "name": "MakerNest Milo chat", "blocks": [{ "type": "message" }] }]
+}
+{% endschema %}

@@ -1,0 +1,56 @@
+{%- liquid
+  assign s = section.settings
+-%}
+<section class="mn {% if s.dark %}mn-dark{% endif %}" id="mn-{{ section.id }}">
+  <div class="mn-wrap mn-row" style="padding-top: 5.6rem; padding-bottom: 7.2rem;">
+    <div class="mn-col">
+      {%- if s.eyebrow != blank -%}<p class="mn-eyebrow"{% if s.dark %} style="color: var(--mn-origins);"{% endif %}>{{ s.eyebrow | escape }}</p>{%- endif -%}
+      {%- if s.heading != blank -%}
+        {%- if s.is_page_title -%}<h1 class="mn-h1">{{ s.heading | escape }}</h1>{%- else -%}<h2 class="mn-h1">{{ s.heading | escape }}</h2>{%- endif -%}
+      {%- endif -%}
+      {%- if s.text != blank -%}<div class="mn-lead{% if s.dark %} mn-muted{% endif %}">{{ s.text }}</div>{%- endif -%}
+      <div class="mn-btns">
+        {%- if s.button_1 != blank -%}<a class="mn-btn{% if s.dark %} mn-btn--yellow{% endif %}" href="{{ s.link_1 | default: '#' }}">{{ s.button_1 | escape }} <span aria-hidden="true">→</span></a>{%- endif -%}
+        {%- if s.button_2 != blank -%}<a class="mn-btn {% if s.dark %}mn-btn--light{% else %}mn-btn--outline{% endif %}" href="{{ s.link_2 | default: '#' }}">{{ s.button_2 | escape }}</a>{%- endif -%}
+      </div>
+      {%- if s.tags != blank -%}
+        <p class="mn-mono" style="display: flex; flex-wrap: wrap; gap: .8rem 2.2rem;">
+          {%- assign tags = s.tags | split: '|' -%}
+          {%- for t in tags -%}<span>{{ t | strip | upcase | escape }}</span>{%- endfor -%}
+        </p>
+      {%- endif -%}
+    </div>
+    {%- if s.image != blank -%}
+      <div class="mn-col mn-media mn-level--{{ s.image_ground }}{% if s.cover %} mn-media--cover{% endif %}">
+        {{ s.image | image_url: width: 1600 | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '(min-width: 990px) 50vw, 100vw', widths: '600, 900, 1200, 1600' }}
+        {%- if s.badge != blank -%}<span class="mn-pill mn-badge">{{ s.badge | escape }}</span>{%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "MakerNest hero",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "For makers aged 10 and up" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "The best place for makers' ideas to come to life." },
+    { "type": "checkbox", "id": "is_page_title", "label": "Heading is the page title (H1)", "default": true },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>A real book, a real machine and a mentor called Milo.</p>" },
+    { "type": "text", "id": "button_1", "label": "First button", "default": "Start with Origins" },
+    { "type": "url", "id": "link_1", "label": "First button link" },
+    { "type": "text", "id": "button_2", "label": "Second button", "default": "See all four levels" },
+    { "type": "url", "id": "link_2", "label": "Second button link" },
+    { "type": "text", "id": "tags", "label": "Small tags (separate with |)", "default": "14 builds per level | The book in the box | Milo included" },
+    { "type": "checkbox", "id": "dark", "label": "Dark background", "default": false },
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "checkbox", "id": "cover", "label": "Image fills its box", "default": false },
+    { "type": "select", "id": "image_ground", "label": "Image background", "default": "origins", "options": [
+      { "value": "origins", "label": "Origins yellow" }, { "value": "motion", "label": "Motion orange" },
+      { "value": "connected", "label": "Connected blue" }, { "value": "autonomy", "label": "Autonomy purple" } ] },
+    { "type": "text", "id": "badge", "label": "Badge on image", "default": "Origins · Level I · On sale" }
+  ],
+  "presets": [{ "name": "MakerNest hero" }]
+}
+{% endschema %}

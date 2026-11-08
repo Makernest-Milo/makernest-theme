@@ -1,0 +1,53 @@
+{%- assign s = section.settings -%}
+<section class="mn mn-section {% if s.ground == 'tint' %}mn-tint{% elsif s.ground == 'dark' %}mn-dark{% endif %}"{% if s.ruled %} style="border-top: .2rem solid var(--mn-ink); border-bottom: .2rem solid var(--mn-ink);"{% endif %} id="{{ s.anchor | default: section.id }}">
+  <div class="mn-wrap" style="display: flex; flex-wrap: wrap; gap: 3.2rem 4.8rem;">
+    <div style="flex: 1 1 {% if s.style == 'list' %}36rem{% else %}100%{% endif %}; display: flex; flex-direction: column; gap: 1.4rem;">
+      {%- if s.eyebrow != blank -%}<p class="mn-eyebrow">{{ s.eyebrow | escape }}</p>{%- endif -%}
+      <h2 class="mn-h3">{{ s.heading | escape }}</h2>
+      {%- if s.text != blank -%}<div>{{ s.text }}</div>{%- endif -%}
+    </div>
+    {%- if s.style == 'list' -%}
+      <ul class="mn-rules" style="flex: 2 1 56rem;">
+        {%- for block in section.blocks -%}
+          <li {{ block.shopify_attributes }}><strong>{{ block.settings.title | escape }}</strong> {{ block.settings.text | escape }}</li>
+        {%- endfor -%}
+      </ul>
+    {%- else -%}
+      <div class="mn-grid" style="flex: 1 1 100%; gap: 2.4rem;">
+        {%- for block in section.blocks -%}
+          <div class="mn-feature{% if s.style == 'plain' %} mn-feature--plain{% endif %}" {{ block.shopify_attributes }}>
+            <strong>{{ block.settings.title | escape }}</strong>
+            <p>{{ block.settings.text | escape }}</p>
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "MakerNest features",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "anchor", "label": "Anchor (optional)" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "The chapters end. The machine doesn't." },
+    { "type": "richtext", "id": "text", "label": "Text" },
+    { "type": "select", "id": "style", "label": "Style", "default": "colour", "options": [
+      { "value": "colour", "label": "Columns, level-colour rules" },
+      { "value": "plain", "label": "Columns, ink rules" },
+      { "value": "list", "label": "List beside the heading" } ] },
+    { "type": "select", "id": "ground", "label": "Background", "default": "paper", "options": [
+      { "value": "paper", "label": "Paper" }, { "value": "tint", "label": "Yellow tint" }, { "value": "dark", "label": "Ink" } ] },
+    { "type": "checkbox", "id": "ruled", "label": "Rules above and below", "default": false }
+  ],
+  "blocks": [
+    { "type": "feature", "name": "Feature", "settings": [
+      { "type": "text", "id": "title", "label": "Title", "default": "Free build" },
+      { "type": "textarea", "id": "text", "label": "Text", "default": "Every part and sketch you've unlocked stays open." }
+    ] }
+  ],
+  "presets": [{ "name": "MakerNest features", "blocks": [{ "type": "feature" }, { "type": "feature" }, { "type": "feature" }] }]
+}
+{% endschema %}

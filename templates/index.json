@@ -1,75 +1,376 @@
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
+    "hero": {
+      "type": "mn-hero",
+      "settings": {
+        "eyebrow": "Diwali launch · Origins and Motion",
+        "heading": "The best place for makers' ideas to come to life.",
+        "is_page_title": true,
+        "text": "<p>A real book, a real machine and a mentor called Milo. Build one machine, chapter by chapter, and give it real jobs in your own home.</p>",
+        "button_1": "Pre-order Origins",
+        "link_1": "/pages/preorder",
+        "button_2": "Book both, 10% off",
+        "link_2": "/pages/preorder",
+        "tags": "14 builds per level | The book in the box | Milo included",
+        "dark": false,
+        "image": "shopify://shop_images/mn-kit-hero.png",
+        "cover": false,
+        "image_ground": "origins",
+        "badge": "Origins · Diwali launch price ₹3,450"
+      }
+    },
+    "levels": {
+      "type": "mn-levels",
+      "settings": {
+        "heading": "Four levels. Each starts where the last one stopped.",
+        "text": "<p>One level a year, starting at 10. Every level is a complete kit on its own, built on real science and real technology.</p>"
+      },
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "origins": {
+          "type": "level",
           "settings": {
-            "heading": "Browse our latest products",
-            "heading_size": "h0"
+            "product": "origins",
+            "level": "origins",
+            "label": "Level I · Electronics and sensors",
+            "name": "Origins",
+            "verbs": "Sense · decide · act",
+            "text": "A machine that notices. Heat, light and sound become numbers.",
+            "status": "On sale",
+            "link": "shopify://products/origins"
           }
         },
-        "button": {
-          "type": "buttons",
+        "motion": {
+          "type": "level",
           "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "product": "motion",
+            "level": "motion",
+            "label": "Level II · Robotics",
+            "name": "Motion",
+            "verbs": "Move · hold · go",
+            "text": "A machine that does work. Force, torque, speed and energy.",
+            "status": "On sale",
+            "link": "shopify://products/motion"
+          }
+        },
+        "connected": {
+          "type": "level",
+          "settings": {
+            "product": "connected",
+            "level": "connected",
+            "label": "Level III · Internet of things",
+            "name": "Connected",
+            "verbs": "Send · agree · reach",
+            "text": "A machine that talks. Signals, messages, range and timing.",
+            "status": "On sale",
+            "link": "shopify://products/connected"
+          }
+        },
+        "autonomy": {
+          "type": "level",
+          "settings": {
+            "product": "autonomy",
+            "level": "autonomy",
+            "label": "Level IV · Artificial intelligence",
+            "name": "Autonomy",
+            "verbs": "Learn · test · be honest",
+            "text": "A machine that learns from you, and tells you how sure it is.",
+            "status": "On sale",
+            "link": "shopify://products/autonomy"
           }
         }
       },
       "block_order": [
-        "heading",
-        "button"
-      ],
-      "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
-        "image_behavior": "none",
-        "desktop_content_alignment": "center",
-        "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
-      }
+        "origins",
+        "motion",
+        "connected",
+        "autonomy"
+      ]
     },
-    "featured_collection": {
-      "type": "featured-collection",
+    "how": {
+      "type": "mn-steps",
       "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
-        "columns_desktop": 4,
-        "color_scheme": "scheme-1",
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "swipe_on_mobile": false,
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "padding_top": 44,
-        "padding_bottom": 36
+        "anchor": "how",
+        "eyebrow": "How a kit works",
+        "heading": "One box. One machine. Fourteen builds.",
+        "image": "shopify://shop_images/mn-kit-exploded.png",
+        "ground": "paper"
+      },
+      "blocks": {
+        "s0": {
+          "type": "step",
+          "settings": {
+            "title": "One machine that grows",
+            "text": "Every chapter adds to the same machine on its own base board. Nothing is thrown away."
+          }
+        },
+        "s1": {
+          "type": "step",
+          "settings": {
+            "title": "Sealed compartments",
+            "text": "Each opens in the week you need it, so most chapters start with something new in your hands."
+          }
+        },
+        "s2": {
+          "type": "step",
+          "settings": {
+            "title": "A real book",
+            "text": "Every build printed in full, in Milo's voice. The book lies open while you build."
+          }
+        },
+        "s3": {
+          "type": "step",
+          "settings": {
+            "title": "Break it on purpose",
+            "text": "Every chapter makes the machine go wrong, so you find out how it really works."
+          }
+        },
+        "s4": {
+          "type": "step",
+          "settings": {
+            "title": "You decide",
+            "text": "The book often won't give you the number. That depends on your home and your job."
+          }
+        },
+        "s5": {
+          "type": "step",
+          "settings": {
+            "title": "Show somebody",
+            "text": "Every chapter ends with showing your work to a person who wasn't there."
+          }
+        }
+      },
+      "block_order": [
+        "s0",
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5"
+      ]
+    },
+    "spotlight": {
+      "type": "mn-spotlight",
+      "settings": {
+        "eyebrow": "Origins · Level I",
+        "heading": "Fourteen things to build, and one machine that becomes all of them.",
+        "button": "Explore Origins",
+        "link": "shopify://products/origins"
+      },
+      "blocks": {
+        "a": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/mn-ch04.jpg",
+            "number": "04",
+            "caption": "The Chatterbox"
+          }
+        },
+        "b": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/mn-ch10.jpg",
+            "number": "10",
+            "caption": "The Creature"
+          }
+        },
+        "c": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/mn-gift.jpg",
+            "number": "F2",
+            "caption": "The Gift"
+          }
+        }
+      },
+      "block_order": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    "milo": {
+      "type": "mn-chat",
+      "settings": {
+        "dark": false,
+        "chat_right": false,
+        "is_page_title": false,
+        "chat_label": "Origins · Chapter 11",
+        "caption": "",
+        "eyebrow": "Meet Milo · Your AI mentor",
+        "heading": "A mentor who asks the right question.",
+        "text": "<p>Milo wrote the books, and Milo is there when you're stuck, on a phone, tablet or laptop. It knows your level and your chapter, hands you every sketch, and answers a question with a better question until you find the answer yourself.</p>",
+        "button_1": "How Milo works",
+        "link_1": "shopify://pages/milo",
+        "button_2": "",
+        "link_2": ""
+      },
+      "blocks": {
+        "m0": {
+          "type": "message",
+          "settings": {
+            "who": "me",
+            "text": "My number won't change."
+          }
+        },
+        "m1": {
+          "type": "message",
+          "settings": {
+            "who": "milo",
+            "text": "Good clue. What have you ruled out so far?"
+          }
+        },
+        "m2": {
+          "type": "message",
+          "settings": {
+            "who": "me",
+            "text": "The display. It works."
+          }
+        },
+        "m3": {
+          "type": "message",
+          "settings": {
+            "who": "milo",
+            "text": "Then follow the sensor lead. Which row is it in on the shield?"
+          }
+        },
+        "m4": {
+          "type": "message",
+          "settings": {
+            "who": "me",
+            "text": "The wrong one!"
+          }
+        }
+      },
+      "block_order": [
+        "m0",
+        "m1",
+        "m2",
+        "m3",
+        "m4"
+      ]
+    },
+    "play": {
+      "type": "mn-features",
+      "settings": {
+        "anchor": "play",
+        "eyebrow": "",
+        "heading": "The chapters end. The machine doesn't.",
+        "text": "",
+        "style": "plain",
+        "ground": "paper",
+        "ruled": true
+      },
+      "blocks": {
+        "f0": {
+          "type": "feature",
+          "settings": {
+            "title": "Free build",
+            "text": "Every part and sketch you've unlocked stays open. This is where your own ideas come from."
+          }
+        },
+        "f1": {
+          "type": "feature",
+          "settings": {
+            "title": "House missions",
+            "text": "Printed mission cards. A doorbell for a friend's house. Who moves the lamp at night?"
+          }
+        },
+        "f2": {
+          "type": "feature",
+          "settings": {
+            "title": "Duels",
+            "text": "Two makers side by side. Whose sensor wins, whose ring lights first."
+          }
+        },
+        "f3": {
+          "type": "feature",
+          "settings": {
+            "title": "Share your build",
+            "text": "Post your machine, see what other makers built, and take on community challenges."
+          }
+        }
+      },
+      "block_order": [
+        "f0",
+        "f1",
+        "f2",
+        "f3"
+      ]
+    },
+    "faq": {
+      "type": "mn-faq",
+      "settings": {
+        "anchor": "grown-ups",
+        "eyebrow": "For grown-ups",
+        "heading": "What you'll want to know before you buy.",
+        "text": "<p>Every box has a card for the grown-up at home: how to help without taking over.</p>"
+      },
+      "blocks": {
+        "q0": {
+          "type": "question",
+          "settings": {
+            "question": "Which level should we start with?",
+            "answer": "<p>Start with Origins, whatever the age. Each level starts where the last one stopped, so Motion builds on the Origins machine and its ideas.</p>"
+          }
+        },
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "Do we need a computer?",
+            "answer": "<p>Yes, a laptop or desktop for uploading each chapter's sketch over USB. Milo works on a phone, tablet or laptop.</p>"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "Is it safe?",
+            "answer": "<p>The builds run on a low-voltage battery pack. The book's safety page covers the battery and charging; read it together before chapter 01.</p>"
+          }
+        },
+        "q3": {
+          "type": "question",
+          "settings": {
+            "question": "What does Milo keep?",
+            "answer": "<p>Milo needs no account and asks for no personal details. Conversations are kept for 7 days, then deleted.</p>"
+          }
+        },
+        "q4": {
+          "type": "question",
+          "settings": {
+            "question": "What if a part breaks or goes missing?",
+            "answer": "<p>Spare sensors, leads, card bodies and stickers are sold in Parts and refills, so no build ever stops. Or write to support@makernest.com.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q0",
+        "q1",
+        "q2",
+        "q3",
+        "q4"
+      ]
+    },
+    "cta": {
+      "type": "mn-cta",
+      "settings": {
+        "boxed": true,
+        "heading": "First Light, on the festival of lights.",
+        "text": "",
+        "button_1": "Pre-order to book yours",
+        "link_1": "/pages/preorder",
+        "button_2": "Visit the shop",
+        "link_2": "shopify://pages/shop"
       }
     }
   },
   "order": [
-    "image_banner",
-    "featured_collection"
+    "hero",
+    "levels",
+    "how",
+    "spotlight",
+    "milo",
+    "play",
+    "faq",
+    "cta"
   ]
 }
