@@ -3,7 +3,7 @@
     "hero": {
       "type": "mn-hero",
       "settings": {
-        "eyebrow": "Diwali launch · Origins and Motion",
+        "eyebrow": "Founding Maker pre-orders · Origins and Motion",
         "heading": "The best place for makers' ideas to come to life.",
         "is_page_title": false,
         "text": "<p>A real book, a real machine and a mentor called Milo. Build one machine, chapter by chapter, and give it real jobs in your own home.</p>",
@@ -16,7 +16,7 @@
         "asset": "mn-kit-hero.webp",
         "cover": false,
         "image_ground": "origins",
-        "badge": "Origins · Diwali launch price ₹3,450"
+        "badge": "Origins · Founding Maker ₹2,950 (was ₹3,450)"
       }
     },
     "levels": {
@@ -365,7 +365,7 @@
     "launch": {
       "type": "mn-launch",
       "settings": {
-        "eyebrow": "Launching today · Diwali 2026",
+        "eyebrow": "Founding Maker pre-orders · first 100 per kit",
         "heading": "A new light",
         "heading_2": "in learning.",
         "text": "<p>MakerNest Origins is here. STEAM learned by building: science, technology and electronics, with curiosity and play from age 10. A MakerNest kit is the first step to your first home maker-space.</p>",
@@ -373,7 +373,7 @@
         "link_1": "/pages/preorder",
         "button_2": "What's in the box",
         "link_2": "#how",
-        "note": "No payment now · Expected delivery by 24 November 2026",
+        "note": "No payment to book · Ships from 24 November 2026",
         "asset": "mn-origins-exploded.webp",
         "image_alt": "The Origins kit opened up: the box, the base board with its parts, and the book"
       }

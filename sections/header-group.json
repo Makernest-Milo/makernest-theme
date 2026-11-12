@@ -17,7 +17,7 @@
         "announcement-bar-0": {
           "type": "announcement",
           "settings": {
-            "text": "Diwali launch · Pre-order to book yours, no payment now · Expected delivery by 24 Nov",
+            "text": "Founding Maker pre-orders · First 100 per kit save ₹500 · No payment to book · Ships from 24 Nov",
             "text_alignment": "center",
             "color_scheme": "scheme-3",
             "link": "/pages/preorder"

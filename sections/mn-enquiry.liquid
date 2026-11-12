@@ -27,7 +27,10 @@
           <label>{{ s.count_label | escape }}<input name="contact[{{ s.count_label | escape }}]" inputmode="numeric"></label>
           <label class="mn-full">Anything else<textarea name="contact[body]"></textarea></label>
           {%- if s.small_print != blank -%}<p class="mn-full mn-note mn-muted">{{ s.small_print | escape }}</p>{%- endif -%}
-          <button type="submit" class="mn-btn mn-btn--yellow mn-full" style="justify-self: start;">{{ s.button | escape }}</button>
+          <div class="mn-full mn-btns">
+            <button type="submit" class="mn-btn mn-btn--yellow">{{ s.button | escape }}</button>
+            {%- if s.whatsapp != blank -%}<a class="mn-btn mn-btn--light" href="https://wa.me/{{ s.whatsapp | remove: '+' | remove: ' ' }}?text={{ s.whatsapp_text | url_encode }}" target="_blank" rel="noopener">Book on WhatsApp</a>{%- endif -%}
+          </div>
         {%- endif -%}
       {%- endform -%}
     </div>
@@ -50,6 +53,8 @@
     { "type": "checkbox", "id": "show_org", "label": "Ask for school or organisation", "default": true },
     { "type": "text", "id": "small_print", "label": "Small print above the button" },
     { "type": "text", "id": "button", "label": "Button", "default": "Send" },
+    { "type": "text", "id": "whatsapp", "label": "WhatsApp number (with country code, e.g. 919940233332)" },
+    { "type": "text", "id": "whatsapp_text", "label": "WhatsApp pre-filled message", "default": "Hi MakerNest, I'd like to book." },
     { "type": "text", "id": "tag", "label": "Tag on the message", "default": "schools" },
     { "type": "text", "id": "thanks", "label": "Thank-you message", "default": "We'll write back to the email you gave." }
   ],

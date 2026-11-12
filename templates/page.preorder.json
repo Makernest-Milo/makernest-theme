@@ -3,20 +3,20 @@
     "hero": {
       "type": "mn-hero",
       "settings": {
-        "eyebrow": "Diwali launch · Pre-order",
+        "eyebrow": "Founding Maker pre-orders",
         "heading": "Pre-order to book yours.",
         "is_page_title": true,
-        "text": "<p>No payment now. Book Origins, Motion or both together, and we'll contact you to confirm before delivery. Expected delivery by 24 November 2026.</p>",
+        "text": "<p>No payment to book. The first 100 makers for each kit become numbered Founding Makers and save ₹500. We'll contact you to confirm before delivery. Boxes ship from 24 November 2026.</p>",
         "button_1": "",
         "link_1": "",
         "button_2": "",
         "link_2": "",
-        "tags": "Origins ₹3,450 | Motion ₹3,750 | Both together ₹6,480, 10% off",
+        "tags": "Origins ₹2,950 (was ₹3,450) | Motion ₹3,250 (was ₹3,750) | Origins + Motion ₹5,980 (was ₹6,480)",
         "dark": false,
         "asset": "mn-kit-exploded.webp",
         "cover": false,
         "image_ground": "origins",
-        "badge": "Prices include taxes"
+        "badge": "Founding Maker price · first 100 per kit · taxes included"
       }
     },
     "form": {
@@ -26,15 +26,17 @@
         "heading": "Book your kit",
         "text": "<p>Every box carries the full 164-page, chapter-by-chapter book, with Milo, your AI mentor, alongside at milo.makernest.com.</p>",
         "topic_label": "Kit",
-        "options": "Origins (₹3,450) | Motion (₹3,750) | Origins + Motion (₹6,480)",
+        "options": "Origins – Founding Maker ₹2,950 | Motion – Founding Maker ₹3,250 | Origins + Motion – Founding Maker ₹5,980",
         "count_label": "How many?",
         "show_phone": true,
         "phone_required": true,
         "show_org": false,
-        "small_print": "No payment now. We'll contact you to confirm your booking before delivery. Prices include taxes.",
+        "small_print": "No payment to book. Founding Maker price for the first 100 bookings per kit. We'll contact you to confirm before delivery. Prices include taxes.",
         "button": "Book yours",
         "tag": "preorder",
-        "thanks": "Your booking is in. We'll contact you to confirm it before delivery."
+        "thanks": "Your booking is in. We'll call or WhatsApp you within a day to confirm your Founding Maker number.",
+        "whatsapp": "919940233332",
+        "whatsapp_text": "Hi MakerNest, I'd like to book Origins at the Founding Maker price."
       }
     }
   },
